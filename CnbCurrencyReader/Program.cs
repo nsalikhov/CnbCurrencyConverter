@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Configuration;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net;
 
 
@@ -27,6 +29,8 @@ namespace CnbCurrencyReader
 				{
 					using (var reader = new StreamReader(ms))
 					{
+						ExchangeInfo[] header;
+
 						while (!reader.EndOfStream)
 						{
 							var line = reader.ReadLine();
@@ -34,11 +38,25 @@ namespace CnbCurrencyReader
 							{
 								if (line.StartsWith("Date"))
 								{
-									// read n split currencies codes
+									header = line
+										.Split('|')
+										.Skip(1)
+										.Select(x => x.Split(' '))
+										.Select(
+											x => new ExchangeInfo
+											{
+												Amount = int.Parse(x[0]),
+												CurrencyCode = x[1]
+											}).ToArray();
 								}
 								else
 								{
-									// read n split currencies values
+									var items = line.Split('|');
+
+									var date = DateTime.ParseExact(items[0], "dd.MMM yyyy", CultureInfo.InvariantCulture);
+									for (int i = 1; i < items.Length; i++)
+									{
+									}
 								}
 							}
 						}
