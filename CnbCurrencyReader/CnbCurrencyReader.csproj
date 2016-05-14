@@ -7,8 +7,8 @@
     <ProjectGuid>{83261AD3-0E08-4A6C-A6ED-10E15303C9F8}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CnbCurrencyConverter</RootNamespace>
-    <AssemblyName>CnbCurrencyConverter</AssemblyName>
+    <RootNamespace>CnbCurrencyReader</RootNamespace>
+    <AssemblyName>CnbCurrencyReader</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
