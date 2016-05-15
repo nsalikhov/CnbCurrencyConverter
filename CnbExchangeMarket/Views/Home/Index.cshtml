@@ -1,3 +1,59 @@
-﻿@{
-	ViewBag.Title = "Home Page";
+﻿<style>
+	.exchange-rate-container
+	{
+		padding: 3em 0;
+		width: 500px;
+	}
+</style>
+
+<div class="exchange-rate-container">
+	<div class="form-group">
+		<label for="exchangeDate">Exchange date:</label>
+		<div class="input-group">
+			<input id="exchangeDate" type="text" class="form-control" />
+			<span class="input-group-btn">
+				<button id="sendMsg" class="btn btn-primary">Get exchange rates</button>
+			</span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="exchangeDate">Currency:</label>
+		<div class="input-group">
+			<select class="form-control"></select>
+		</div>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th class="col-md-4">Currency code</th>
+				<th class="col-md-4">Amount</th>
+				<th class="col-md-4">Rate</th>
+			</tr>
+		</thead>
+		<tbody data-bind="foreach: messages">
+			<tr>
+				<td data-bind="text: text">RUB</td>
+				<td data-bind="text: text">1</td>
+				<td data-bind="text: text">10.10</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+@section scripts
+{
+	<script>
+		$(function() {
+			$("#exchangeDate")
+				.datetimepicker({
+					timepicker: false,
+					format: "d/m/Y",
+					minDate: "1991/01/01",
+					maxDate: 0,
+					mask: true,
+					value: new Date(),
+					dayOfWeekStart: 1
+				});
+		});
+	</script>
 }
