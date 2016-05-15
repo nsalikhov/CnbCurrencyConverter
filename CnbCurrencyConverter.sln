@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnbCurrencyReader", "CnbCur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{359BA7A8-A501-4E4C-895C-8B8B4F839CFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnbExchangeMarket", "CnbExchangeMarket\CnbExchangeMarket.csproj", "{2DA7BBE6-F4D6-4BD0-94A1-A18AD180DFC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{359BA7A8-A501-4E4C-895C-8B8B4F839CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{359BA7A8-A501-4E4C-895C-8B8B4F839CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{359BA7A8-A501-4E4C-895C-8B8B4F839CFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DA7BBE6-F4D6-4BD0-94A1-A18AD180DFC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DA7BBE6-F4D6-4BD0-94A1-A18AD180DFC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DA7BBE6-F4D6-4BD0-94A1-A18AD180DFC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DA7BBE6-F4D6-4BD0-94A1-A18AD180DFC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
