@@ -18,7 +18,7 @@ namespace DataAccess
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
-			modelBuilder.Entity<ExchangeRate>().HasRequired(p => p.CurrencyCode);
+			modelBuilder.Entity<ExchangeRate>().Property(x => x.Rate).HasPrecision(18, 3);
 		}
 	}
 }
