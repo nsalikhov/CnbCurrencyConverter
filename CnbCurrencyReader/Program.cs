@@ -5,6 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Net;
 
+using DataAccess;
+using DataAccess.Entities;
+using DataAccess.Repositories;
+
 
 
 namespace CnbCurrencyReader
@@ -29,7 +33,9 @@ namespace CnbCurrencyReader
 				{
 					using (var reader = new StreamReader(ms))
 					{
-						ExchangeInfo[] header;
+						var repository = new Repository<ExchangeRate>(
+							new CnbExchangeRatesContext(ConfigurationManager.ConnectionStrings["ExchangeRateConnection"].ConnectionString));
+						ExchangeInfo[] header = null;
 
 						while (!reader.EndOfStream)
 						{
@@ -47,7 +53,8 @@ namespace CnbCurrencyReader
 											{
 												Amount = int.Parse(x[0]),
 												CurrencyCode = x[1]
-											}).ToArray();
+											})
+										.ToArray();
 								}
 								else
 								{
@@ -56,6 +63,16 @@ namespace CnbCurrencyReader
 									var date = DateTime.ParseExact(items[0], "dd.MMM yyyy", CultureInfo.InvariantCulture);
 									for (int i = 1; i < items.Length; i++)
 									{
+										var exchangeInfo = header[i - 1];
+										var entity = new ExchangeRate
+										{
+											CurrencyCode = exchangeInfo.CurrencyCode,
+											Amount = exchangeInfo.Amount,
+											Date = date,
+											Rate = decimal.Parse(items[i], CultureInfo.InvariantCulture)
+										};
+
+										repository.Add(entity);
 									}
 								}
 							}
