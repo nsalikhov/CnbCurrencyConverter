@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
 
 
 
@@ -6,7 +6,7 @@ namespace DataAccess.Repositories
 {
 	public interface IRepository<TEntity> where TEntity : class
 	{
-		IQueryable<TEntity> All();
+		DbSet<TEntity> All { get; }
 
 		void Add(TEntity entity);
 

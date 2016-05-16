@@ -23,24 +23,15 @@ namespace CnbExchangeMarket.Controllers
 
 		public JsonResult ExchangeRates(DateTime exchangeDate)
 		{
-			var existingDate = _exchangeRatesRepository
-				.All()
-				.Where(x => x.Date <= exchangeDate)
-				.OrderByDescending(x => x.Date)
-				.Select(x => x.Date)
-				.FirstOrDefault();
+			var exchangeRates = from exchangeRate in _exchangeRatesRepository.All
+								let existingDate = from t in _exchangeRatesRepository.All
+													where t.Date <= exchangeDate
+													orderby t.Date descending
+													select new { t.Date }
+								where exchangeRate.Date == existingDate.FirstOrDefault().Date
+								select exchangeRate;
 
-			if (existingDate != default(DateTime))
-			{
-				var exchangeRates = _exchangeRatesRepository
-					.All()
-					.Where(x => x.Date == existingDate)
-					.ToArray();
-
-				return Json(exchangeRates, JsonRequestBehavior.AllowGet);
-			}
-
-			return Json(null, JsonRequestBehavior.AllowGet);
+			return Json(exchangeRates.ToArray(), JsonRequestBehavior.AllowGet);
 		}
 
 		private readonly IRepository<ExchangeRate> _exchangeRatesRepository;
