@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnbCurrencyReader", "CnbCurrencyReader\CnbCurrencyReader.csproj", "{83261AD3-0E08-4A6C-A6ED-10E15303C9F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeRatesImporter", "ExchangeRatesImporter\ExchangeRatesImporter.csproj", "{83261AD3-0E08-4A6C-A6ED-10E15303C9F8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{359BA7A8-A501-4E4C-895C-8B8B4F839CFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CnbExchangeMarket", "CnbExchangeMarket\CnbExchangeMarket.csproj", "{2DA7BBE6-F4D6-4BD0-94A1-A18AD180DFC4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeRates", "ExchangeRates\ExchangeRates.csproj", "{2DA7BBE6-F4D6-4BD0-94A1-A18AD180DFC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -5,7 +5,7 @@ using System.Web.Routing;
 
 
 
-namespace CnbExchangeMarket
+namespace ExchangeRates
 {
 	public class MvcApplication : HttpApplication
 	{

@@ -2,16 +2,16 @@ using System.Configuration;
 using System.Linq;
 using System.Web.Mvc;
 
-using CnbExchangeMarket.Controllers;
-
 using DataAccess;
+
+using ExchangeRates.Controllers;
 
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Mvc;
 
 
 
-namespace CnbExchangeMarket
+namespace ExchangeRates
 {
 	public static class UnityConfig
 	{

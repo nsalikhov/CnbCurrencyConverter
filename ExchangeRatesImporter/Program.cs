@@ -12,7 +12,7 @@ using DataAccess.Repositories;
 
 
 
-namespace CnbCurrencyReader
+namespace ExchangeRatesImporter
 {
 	static class Program
 	{

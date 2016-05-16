@@ -7,7 +7,7 @@ using DataAccess.Repositories;
 
 
 
-namespace CnbExchangeMarket.Controllers
+namespace ExchangeRates.Controllers
 {
 	public class HomeController : Controller
 	{

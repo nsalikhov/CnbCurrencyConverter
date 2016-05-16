@@ -1,4 +1,4 @@
-namespace CnbCurrencyReader
+namespace ExchangeRatesImporter
 {
 	public class ExchangeInfo
 	{

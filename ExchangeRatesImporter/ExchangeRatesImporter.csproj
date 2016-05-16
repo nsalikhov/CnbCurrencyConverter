@@ -7,8 +7,8 @@
     <ProjectGuid>{83261AD3-0E08-4A6C-A6ED-10E15303C9F8}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CnbCurrencyReader</RootNamespace>
-    <AssemblyName>CnbCurrencyReader</AssemblyName>
+    <RootNamespace>ExchangeRatesImporter</RootNamespace>
+    <AssemblyName>ExchangeRatesImporter</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

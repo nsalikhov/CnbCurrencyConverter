@@ -2,7 +2,7 @@
 
 
 
-namespace CnbExchangeMarket
+namespace ExchangeRates
 {
 	public class BundleConfig
 	{
