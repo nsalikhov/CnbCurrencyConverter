@@ -4,40 +4,48 @@
 		padding: 3em 0;
 		width: 500px;
 	}
+	.exchange-rate-table-container
+	{
+		padding-top: 1em;
+	}
 </style>
 
-<div class="exchange-rate-container">
+<div id="exchange-market" class="exchange-rate-container">
 	<div class="form-group">
 		<label for="exchangeDate">Exchange date:</label>
 		<div class="input-group">
-			<input id="exchangeDate" type="text" class="form-control" />
+			<input id="exchangeDate" type="text" class="form-control" data-bind="textInput: exchangeDate" />
 			<span class="input-group-btn">
-				<button id="sendMsg" class="btn btn-primary">Get exchange rates</button>
+				<button id="sendMsg" class="btn btn-primary" data-bind="click: getExchangeRates, enable: !!exchangeDate()">Get exchange rates</button>
 			</span>
 		</div>
 	</div>
-	<div class="form-group">
+	<div class="form-group" data-bind="visible: exchangeRates().length > 0">
 		<label for="exchangeDate">Currency:</label>
 		<div class="input-group">
-			<select class="form-control"></select>
+			<select class="form-control" data-bind="value: $root.exchangeRate, options: exchangeRates, optionsText: 'currencyCode', optionsCaption: 'Select an item...'"></select>
 		</div>
 	</div>
-	<table class="table">
-		<thead>
-			<tr>
-				<th class="col-md-4">Currency code</th>
-				<th class="col-md-4">Amount</th>
-				<th class="col-md-4">Rate</th>
-			</tr>
-		</thead>
-		<tbody data-bind="foreach: messages">
-			<tr>
-				<td data-bind="text: text">RUB</td>
-				<td data-bind="text: text">1</td>
-				<td data-bind="text: text">10.10</td>
-			</tr>
-		</tbody>
-	</table>
+	
+	<div class="exchange-rate-table-container" data-bind="visible: exchangeRate">
+		<h4>Exchange rate:</h4>
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="col-md-4">Currency code</th>
+					<th class="col-md-4">Amount</th>
+					<th class="col-md-4">Rate</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-bind="with: exchangeRate">
+					<td data-bind="text: currencyCode"></td>
+					<td data-bind="text: amount"></td>
+					<td data-bind="text: rate"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
 
 @section scripts
@@ -51,9 +59,29 @@
 					minDate: "1991/01/01",
 					maxDate: 0,
 					mask: true,
-					value: new Date(),
 					dayOfWeekStart: 1
 				});
+
+			var ExchangeRate = function(currencyCode, amount, rate) {
+				this.currencyCode = currencyCode;
+				this.amount = amount;
+				this.rate = rate;
+			}
+
+			var ExchangeMarketViewModel = function() {
+				var self = this;
+
+				self.exchangeDate = ko.observable();
+				self.exchangeRates = ko.observableArray();
+				self.exchangeRate = ko.observable();
+
+				self.getExchangeRates = function() {
+					// self.exchangeRates.push();
+				};
+			};
+
+			var viewModel = new ExchangeMarketViewModel();
+			ko.applyBindings(viewModel, document.getElementById("exchange-market"));
 		});
 	</script>
 }
