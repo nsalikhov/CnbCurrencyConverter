@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Globalization;
 using System.IO;
@@ -36,6 +37,7 @@ namespace CnbCurrencyReader
 						var repository = new Repository<ExchangeRate>(
 							new CnbExchangeRatesContext(ConfigurationManager.ConnectionStrings["ExchangeRateConnection"].ConnectionString));
 						ExchangeInfo[] header = null;
+						var exchangeRates = new List<ExchangeRate>();
 
 						while (!reader.EndOfStream)
 						{
@@ -64,22 +66,25 @@ namespace CnbCurrencyReader
 									for (int i = 1; i < items.Length; i++)
 									{
 										var exchangeInfo = header[i - 1];
-										var entity = new ExchangeRate
+
+										exchangeRates.Add(new ExchangeRate
 										{
 											CurrencyCode = exchangeInfo.CurrencyCode,
 											Amount = exchangeInfo.Amount,
 											Date = date,
 											Rate = decimal.Parse(items[i], CultureInfo.InvariantCulture)
-										};
-
-										repository.Add(entity);
+										});
 									}
 								}
 							}
 						}
+
+						repository.AddRange(exchangeRates.ToArray());
 					}
 				}
 			}
+
+			Console.WriteLine("Exchange rates successfully imported.");
 		}
 
 		private static readonly int MinAvailableYear = 1991;

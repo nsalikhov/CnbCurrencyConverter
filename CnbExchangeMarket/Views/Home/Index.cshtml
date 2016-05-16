@@ -32,9 +32,10 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th class="col-md-4">Currency code</th>
-					<th class="col-md-4">Amount</th>
-					<th class="col-md-4">Rate</th>
+					<th class="col-md-3">Currency code</th>
+					<th class="col-md-2">Amount</th>
+					<th class="col-md-2">Rate</th>
+					<th class="col-md-4">Date</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -42,6 +43,7 @@
 					<td data-bind="text: currencyCode"></td>
 					<td data-bind="text: amount"></td>
 					<td data-bind="text: rate"></td>
+					<td data-bind="text: date"></td>
 				</tr>
 			</tbody>
 		</table>
@@ -55,17 +57,18 @@
 			$("#exchangeDate")
 				.datetimepicker({
 					timepicker: false,
-					format: "d/m/Y",
-					minDate: "1991/01/01",
+					format: "Y-m-d",
+					minDate: "1991-01-01",
 					maxDate: 0,
 					mask: true,
 					dayOfWeekStart: 1
 				});
 
-			var ExchangeRate = function(currencyCode, amount, rate) {
+			var ExchangeRate = function(currencyCode, amount, rate, date) {
 				this.currencyCode = currencyCode;
 				this.amount = amount;
 				this.rate = rate;
+				this.date = date;
 			}
 
 			var ExchangeMarketViewModel = function() {
@@ -76,7 +79,25 @@
 				self.exchangeRate = ko.observable();
 
 				self.getExchangeRates = function() {
-					// self.exchangeRates.push();
+					$.ajax({
+						url: "@Url.Action("ExchangeRates")" + "?exchangeDate=" + self.exchangeDate(),
+						contentType: "application/json",
+						type: "GET",
+						success: function (data) {
+							self.exchangeRates.removeAll();
+
+							for (var i = 0; i < data.length; i++) {
+								var item = data[i];
+								var date = new Date(parseInt(item.Date.substr(6)));
+
+								self.exchangeRates.push(new ExchangeRate(
+									item.CurrencyCode,
+									item.Amount,
+									item.Rate,
+									date.toDateString()));
+							}
+						}
+					});
 				};
 			};
 

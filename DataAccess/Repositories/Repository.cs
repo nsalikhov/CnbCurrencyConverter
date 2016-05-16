@@ -21,6 +21,13 @@ namespace DataAccess.Repositories
 			_objectContext.SaveChanges();
 		}
 
+		public void AddRange(TEntity[] entities)
+		{
+			_objectContext.Set<TEntity>().AddRange(entities);
+
+			_objectContext.SaveChanges();
+		}
+
 		public virtual void Update(TEntity entity)
 		{
 			_objectContext.Entry<TEntity>(entity).State = EntityState.Modified;

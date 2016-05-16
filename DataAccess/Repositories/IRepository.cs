@@ -10,6 +10,8 @@ namespace DataAccess.Repositories
 
 		void Add(TEntity entity);
 
+		void AddRange(TEntity[] entities);
+
 		void Update(TEntity entity);
 
 		void Delete(TEntity entity);
