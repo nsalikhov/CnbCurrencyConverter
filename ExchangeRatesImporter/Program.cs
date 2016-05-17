@@ -38,7 +38,7 @@ namespace ExchangeRatesImporter
 					using (var reader = new StreamReader(ms))
 					{
 						var repository = new Repository<ExchangeRate>(
-							new CnbExchangeRatesContext(ConfigurationManager.ConnectionStrings["ExchangeRateConnection"].ConnectionString));
+							new ExchangeRatesContext(ConfigurationManager.ConnectionStrings["ExchangeRateConnection"].ConnectionString));
 						ExchangeInfo[] header = null;
 						var exchangeRates = new List<ExchangeRate>();
 

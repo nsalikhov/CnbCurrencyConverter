@@ -65,8 +65,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CnbExchangeRatesContext.cs" />
-    <Compile Include="CnbExchangeRatesRegistrar.cs" />
+    <Compile Include="ExchangeRatesContext.cs" />
+    <Compile Include="ExchangeRatesDbRegistrar.cs" />
     <Compile Include="Entities\ExchangeRate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IRepository.cs" />

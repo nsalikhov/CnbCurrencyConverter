@@ -29,7 +29,7 @@ namespace ExchangeRates
 
 		private static void RegisterTypes(IUnityContainer container)
 		{
-			CnbExchangeRatesRegistrar.Register(container, ConfigurationManager.ConnectionStrings["ExchangeRateConnection"].ConnectionString);
+			ExchangeRatesDbRegistrar.Register(container, ConfigurationManager.ConnectionStrings["ExchangeRateConnection"].ConnectionString);
 
 			container.RegisterType<HomeController>();
 		}

@@ -6,9 +6,9 @@ using DataAccess.Entities;
 
 namespace DataAccess
 {
-	public class CnbExchangeRatesContext : DbContext
+	public class ExchangeRatesContext : DbContext
 	{
-		public CnbExchangeRatesContext(string nameOrConnectionString)
+		public ExchangeRatesContext(string nameOrConnectionString)
 			: base(nameOrConnectionString)
 		{
 			Configuration.LazyLoadingEnabled = false;
