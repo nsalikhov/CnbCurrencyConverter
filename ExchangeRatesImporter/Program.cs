@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 
 using DataAccess;
 using DataAccess.Entities;
@@ -26,9 +27,11 @@ namespace ExchangeRatesImporter
 				Console.WriteLine("Invalid year \"{0}\". Foreign exchange market rates available from {1} up to the present.", exchangeYear, MinAvailableYear);
 			}
 
+			var url = Encoding.UTF8.GetString(Convert.FromBase64String(ConfigurationManager.AppSettings["ExchangeRatesByYearUrl"]));
+
 			using (var webClient = new WebClient())
 			{
-				var data = webClient.DownloadData($"{ConfigurationManager.AppSettings["CnbYearExchangeRateUrl"]}{year}");
+				var data = webClient.DownloadData($"{url}{year}");
 
 				using (var ms = new MemoryStream(data))
 				{
